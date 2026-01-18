@@ -67,7 +67,10 @@
  **在线文档**：[在线文档](https://www.offercar.cn/docs)
 > 无需安装，即刻开始您的 AI 面试之旅！
 
-![demo](.github/assets/demos/demo.gif)
+<div align="center">
+  <img src=".github/assets/demos/demo.gif" alt="AI 面试演示" width="70%"/>
+  <p><em>AI 面试演示视频</em></p>
+</div>
 
 ---
 
