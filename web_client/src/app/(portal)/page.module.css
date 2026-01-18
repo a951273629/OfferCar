@@ -1,0 +1,419 @@
+/* 核心容器 */
+.pageContainer {
+  position: relative;
+  background-color: var(--color-bg-base);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--color-text-base);
+}
+
+/* 动态背景网格 */
+.pageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--bg-pattern-opacity, 1);
+}
+
+/* 顶部极光光晕 */
+.heroGlow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 800px;
+  background: radial-gradient(circle at center, 
+    var(--hero-glow-color-1) 0%,
+    var(--hero-glow-color-2) 40%,
+    transparent 80%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+  animation: pulseGlow 6s ease-in-out infinite alternate;
+}
+
+/* Hero 区域 */
+.heroSection {
+  position: relative;
+  padding: 160px 24px 100px;
+  text-align: center;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeInUp 1s ease-out;
+}
+
+.heroTitle {
+  font-size: clamp(48px, 5vw, 80px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: var(--text-hero);
+  text-shadow: none;
+}
+
+/* 深色模式 Hero 标题 */
+[data-theme='dark'] .heroTitle {
+  background: linear-gradient(135deg, var(--title-gradient-start) 0%, var(--title-gradient-end) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--text-shadow-glow);
+}
+
+.gradientText {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.heroSubtitle {
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+  font-weight: 400;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+/* 玻璃拟态卡片通用类 */
+.glassCard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  height: 100%; /* 撑满网格高度 */
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--glass-shadow);
+}
+
+.glassCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+/* 深色模式下的 Hover 效果覆盖 */
+[data-theme='dark'] .glassCard:hover {
+  border-color: var(--glass-hover-border);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.glassCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glass-shine),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.glassCard:hover::before {
+  left: 100%;
+}
+
+/* Bento Grid 特性区域 */
+.featuresSection {
+  max-width: 1000px; /* 限制最大宽度，使田字格更紧凑 */
+  margin: 0 auto;
+  padding: 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.sectionTitle {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  /* 默认(亮色)使用深灰渐变，提升可读性 */
+  background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 深色模式下的标题 */
+[data-theme='dark'] .sectionTitle {
+  background: linear-gradient(to right, var(--title-gradient-start), var(--title-gradient-end));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 强制两列田字格 */
+  gap: 24px;
+  align-items: stretch; /* 确保高度一致 */
+}
+
+.featureIcon {
+  font-size: 40px;
+  margin-bottom: 24px;
+  color: var(--color-neon-blue);
+  filter: drop-shadow(0 0 8px var(--icon-drop-shadow));
+}
+
+.featureTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text-base);
+}
+
+.featureDesc {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 平台跑马灯 */
+.platformSection {
+  padding: 60px 0;
+  overflow: hidden;
+  background: var(--marquee-bg);
+  backdrop-filter: blur(5px);
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.marqueeContainer {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.marqueeContainer:hover {
+  animation-play-state: paused;
+}
+
+.platformItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 40px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.platformItem:hover {
+  opacity: 1;
+}
+
+.platformItem img {
+  filter: grayscale(100%) brightness(1.2);
+  transition: filter 0.3s;
+}
+
+.platformItem:hover img {
+  filter: grayscale(0%) brightness(1);
+}
+
+.platformName {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* 数据展示区 - 浮动面板 */
+.statsSection {
+  padding: 100px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.statCard {
+  text-align: center;
+  background: var(--stat-card-bg);
+  border: 1px solid var(--glass-border);
+  padding: 32px 16px;
+  border-radius: 16px;
+  transition: transform 0.3s;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  border-color: var(--color-neon-purple);
+}
+
+/* 数据展示数字 - Light Mode */
+.statNumber {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--color-text-base);
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Dark Mode 渐变效果 */
+[data-theme='dark'] .statNumber {
+  background: linear-gradient(to bottom, var(--color-text-base) 20%, var(--color-text-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  color: var(--color-neon-blue);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 评价区域 */
+.testimonialSection {
+  padding: 80px 24px;
+  max-width: 1000px; /* 与 features 统一 */
+  margin: 0 auto;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 强制田字格 */
+  gap: 24px;
+  align-items: stretch;
+}
+
+.quoteText {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto; /* 推到底部 */
+}
+
+.authorName {
+  font-weight: 600;
+  color: var(--color-text-base);
+}
+
+.authorRole {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+}
+
+/* CTA 区域 */
+.ctaSection {
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: var(--cta-glow);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* 动画定义 */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+  100% { opacity: 1.0; transform: translateX(-50%) scale(1.15); }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 响应式适配 */
+@media (max-width: 1024px) {
+  .statsSection {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 42px;
+  }
+  
+  .bentoGrid, 
+  .testimonialGrid {
+    grid-template-columns: 1fr; /* 移动端单列 */
+  }
+
+  .statsSection {
+    gap: 16px;
+  }
+  
+  .platformItem {
+    padding: 0 20px;
+  }
+}

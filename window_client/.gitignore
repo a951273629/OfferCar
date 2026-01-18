@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+release/
+*.tsbuildinfo
+# 保留 build 目录但忽略其内容（图标资源除外）
+build/*
+!build/.gitkeep
+!build/*.ico
+!build/*.icns
+
+# Electron Forge 输出
+out/
+.webpack/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.backup
+.cache/
+

@@ -1,0 +1,92 @@
+/* Header 容器 */
+
+
+/* Logo */
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.3s, color 0.3s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+/* 右侧导航容器 */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* 导航链接容器 */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* 导航链接基础样式 */
+.navLink {
+  position: relative;
+  color: var(--color-text-base);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+/* 导航链接悬浮效果 */
+.navLink:hover {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* 激活状态的导航链接 */
+.navLink.active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* 激活状态的底部紫色横条 */
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 0;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 2px 2px 0 0;
+}
+
+/* 激活状态悬浮时保持底部横条 */
+.navLink.active:hover::after {
+  display: block;
+}
+
+/* 用户信息容器 */
+.userSection {
+  display: flex;
+  align-items: center;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .navLinks {
+    gap: 12px;
+  }
+
+  .navLink {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+}
+

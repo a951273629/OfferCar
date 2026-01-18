@@ -1,0 +1,787 @@
+/* ==================== Tailwind CSS 基础样式 ==================== */
+/* 导入 Tailwind CSS 的基础样式、组件和工具类 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================== CSS 变量定义 ==================== */
+/* 定义全局 CSS 变量，便于在整个应用中统一管理颜色 */
+
+/* 亮色主题（默认）- 蓝色、黑字、白背景 */
+:root {
+  --foreground-rgb: 0, 0, 0;           /* 前景色（文字颜色）：黑色 */
+  --background-start-rgb: 255, 255, 255;  /* 背景渐变起始色：白色 */
+  --background-end-rgb: 255, 255, 255;    /* 背景渐变结束色：白色 */
+  
+  /* 主题色 */
+  --color-primary: #1890ff;
+  --color-primary-hover: #40a9ff;
+  --color-primary-active: #096dd9;
+  
+  /* 背景色 */
+  --color-bg-base: #ffffff;
+  --color-bg-container: #ffffff;
+  --color-bg-elevated: #f8f9fa;
+  --color-bg-layout: #f5f5f5;
+  
+  /* 消息背景色 */
+  --color-message-user: #f5f5f5;
+  --color-message-assistant: #e6f7ff;
+  --color-message-interviewer: #e6f4ff; /* 面试官消息背景（浅蓝） */
+  --color-message-interviewee: #f9f0ff; /* 面试者消息背景（浅紫） */
+  
+  /* 文字颜色 */
+  --color-text-base: rgba(0, 0, 0, 0.88);
+  --color-text-secondary: rgba(0, 0, 0, 0.65);
+  --color-text-tertiary: rgba(0, 0, 0, 0.45);
+  --color-text-quaternary: #999;
+  
+  /* 边框颜色 */
+  --color-border: #d9d9d9;
+  --color-border-secondary: #f0f0f0;
+  
+  /* 列表选中项 */
+  --color-list-item-selected: #f0f0f0;
+  --color-list-item-hover: #fafafa;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  
+  /* Hero Section 渐变 */
+  --hero-gradient: linear-gradient(15deg, #8095f1 0%, #8e62bb 40%, transparent 150%);
+  
+  /* Testimonial Section 渐变 */
+  --testimonial-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  
+  /* ==================== 登录页：科幻晕染（亮色） ==================== */
+  /* 亮色主题：白色为主，叠加青紫霓虹晕染 */
+  --color-login-bg:
+    radial-gradient(1200px circle at 15% 10%, rgba(98, 225, 231, 0.18) 0%, transparent 55%),
+    radial-gradient(900px circle at 85% 20%, rgba(185, 56, 236, 0.16) 0%, transparent 60%),
+    radial-gradient(720px circle at 55% 90%, rgba(105, 48, 202, 0.1) 0%, transparent 58%),
+    linear-gradient(180deg, #ffffff 0%, #f7f8ff 45%, #ffffff 100%);
+
+  /* 登录页语义化变量（便于后续微调） */
+  --login-grid-opacity: 0.10;
+  --login-grid-line: rgba(0, 243, 255, 0.14);
+  --login-aurora-1: rgba(0, 243, 255, 0.22);
+  --login-aurora-2: rgba(188, 19, 254, 0.18);
+  --login-aurora-3: rgba(124, 58, 237, 0.10);
+  --login-aurora-opacity: 0.85;
+
+  --login-card-bg: rgba(255, 255, 255, 0.72);
+  --login-card-border: rgba(24, 144, 255, 0.22);
+  --login-card-glow: rgba(0, 243, 255, 0.14);
+  --login-card-shadow: 0 18px 60px rgba(0, 0, 0, 0.12), 0 0 36px rgba(0, 243, 255, 0.10);
+  --login-card-hover-shadow: 0 22px 70px rgba(0, 0, 0, 0.16), 0 0 48px rgba(188, 19, 254, 0.14);
+  
+  /* 滚动条颜色 */
+  --scrollbar-track: #f1f1f1;
+  --scrollbar-thumb: #888;
+  --scrollbar-thumb-hover: #555;
+  
+  /* 灰度背景色 */
+  --color-bg-gray-1: #fafafa;
+  --color-bg-gray-2: #f5f5f5;
+  --color-bg-gray-3: #f0f0f0;
+  
+  /* 状态提示背景色 */
+  --color-warning-bg: #fff7e6;
+  --color-warning-border: #ffd591;
+  --color-error-bg: #fff2f0;
+  --color-error-border: #ffccc7;
+  --color-info-bg: #fffbe6;
+  --color-info-border: #ffe58f;
+  
+  /* 功能性颜色 */
+  --color-interviewee: #7c3aed;  /* 面试者（紫色）*/
+  --color-interviewer: #1677ff;   /* 面试官（蓝色）*/
+  
+  /* 灰色文字（补充）*/
+  --color-text-gray-light: #999;
+  --color-text-gray-medium: #666;
+  --color-text-gray-dark: #8c8c8c;
+
+  /* 科技感霓虹色 (新添加) */
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #bc13fe;
+  --color-neon-cyan: #0afff0;
+  --color-neon-pink: #ff00ff;
+  
+  /* 玻璃拟态变量 (亮色模式) */
+  --glass-border: rgba(0, 0, 0, 0.08); /* 更明显的深色边框 */
+  --glass-bg: rgba(255, 255, 255, 0.75); /* 更高的不透明度 */
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* 柔和的阴影 */
+
+  /* 用户头像 */
+  --avatar-bg: #e0e0e0;
+  --avatar-text: #333;
+
+  /* 星星评分 */
+  --star-rating: #faad14;
+
+  /* 跑马灯背景 */
+  --marquee-bg: rgba(0, 0, 0, 0.03);
+
+  /* 统计卡片背景 */
+  --stat-card-bg: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
+
+  /* 背景网格线 */
+  --grid-line-color: rgba(0, 0, 0, 0.03);
+
+  /* CTA 光晕 */
+  --cta-glow: radial-gradient(circle, rgba(188, 19, 254, 0.12), transparent 70%);
+  /* 浅色渐变：蓝青色 -> 浅紫色 (清新科技感) */
+  --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%); 
+  --text-hero: #000000; /* 纯黑文字 */
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.1); /* 柔和阴影 */
+  --bg-pattern-opacity: 0.4; /* 减淡背景网格 */
+  
+  /* 覆盖基础颜色 */
+  /* --color-text-base: #000000; */
+  --color-text-secondary: #4b5563;
+
+  /* Ant Design 错误/危险色 */
+  --color-error: #ff4d4f;
+  --color-error-hover: #ff7875;
+
+  /* Hero 光晕效果 */
+  --hero-glow-color-1: rgba(0, 243, 255, 0.15);
+  --hero-glow-color-2: rgba(188, 19, 254, 0.1);
+
+  /* 按钮阴影 */
+  --shadow-button-primary: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+  /* 文本阴影 */
+  --text-shadow-glow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+  /* 卡片 hover 边框 (亮色) */
+  --glass-hover-border: var(--color-primary);
+
+  /* 玻璃光泽效果 */
+  --glass-shine: rgba(255, 255, 255, 0.05);
+
+  /* 标题渐变 (亮色) */
+  --title-gradient-start: #333;
+  --title-gradient-end: #666;
+
+  /* 图标投影颜色 */
+  --icon-drop-shadow: rgba(0, 243, 255, 0.4);
+
+  /* Guide Modal */
+  --guide-modal-bg: var(--color-bg-container);
+  --guide-modal-text: var(--color-text-base);
+  --guide-modal-border: var(--color-border);
+  --guide-modal-shadow: var(--shadow-lg);
+  
+  /* Guide 按钮 */
+  --guide-button-primary-bg: var(--color-primary);
+  --guide-button-primary-hover: var(--color-primary-hover);
+  --guide-button-text: #fff;
+  
+  /* Guide Mask */
+  --guide-mask-bg: rgba(0, 0, 0, 0.5);
+  
+  /* Guide Hotspot */
+  --guide-hotspot-border: var(--color-primary);
+  --guide-hotspot-shadow: 0 0 0 4px rgba(24, 144, 255, 0.2);
+}
+
+/* 暗黑主题 - 蓝到淡紫渐变、白字、黑背景 */
+[data-theme='dark'] {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  
+  /* 主题色 */
+  --color-primary: #597ef7;
+  --color-primary-hover: #7c9fff;
+  --color-primary-active: #3c5fc7;
+  
+  /* 背景色 */
+  --color-bg-base: #000000;
+  --color-bg-container: #141414;
+  --color-bg-elevated: #1f1f1f;
+  --color-bg-layout: #0a0a0a;
+  
+  /* 消息背景色 */
+  --color-message-user: #1f1f1f;
+  --color-message-assistant: #1a2332;
+  --color-message-interviewer: #1a2332; /* 面试官消息背景（偏蓝灰） */
+  --color-message-interviewee: #231a32; /* 面试者消息背景（偏紫灰） */
+  
+  /* 文字颜色 */
+  --color-text-base: rgba(255, 255, 255, 0.85);
+  --color-text-secondary: rgba(255, 255, 255, 0.65);
+  --color-text-tertiary: rgba(255, 255, 255, 0.45);
+  --color-text-quaternary: rgba(255, 255, 255, 0.35);
+  
+  /* 边框颜色 */
+  --color-border: #434343;
+  --color-border-secondary: #303030;
+  
+  /* 列表选中项 */
+  --color-list-item-selected: #2a2a2a;
+  --color-list-item-hover: #333333;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(255, 255, 255, 0.03);
+  --shadow-md: 0 4px 16px rgba(255, 255, 255, 0.06);
+  --shadow-lg: 0 8px 24px rgba(255, 255, 255, 0.08);
+  
+  /* Hero Section 深色渐变 */
+  --hero-gradient: linear-gradient(15deg, #1e3a8a 0%, #3730a3 40%, transparent 150%);
+  
+  /* Testimonial Section 深色渐变 */
+  --testimonial-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  
+  /* ==================== 登录页：科幻晕染（暗色） ==================== */
+  /* 暗色主题：黑紫为主，叠加霓虹光晕 */
+  --color-login-bg:
+    radial-gradient(1000px circle at 18% 14%, rgba(0, 243, 255, 0.18) 0%, transparent 55%),
+    radial-gradient(920px circle at 82% 22%, rgba(217, 70, 239, 0.18) 0%, transparent 60%),
+    radial-gradient(760px circle at 55% 92%, rgba(89, 126, 247, 0.12) 0%, transparent 62%),
+    linear-gradient(180deg, #06030a 0%, #0b0620 45%, #05010a 100%);
+
+  --login-grid-opacity: 0.18;
+  --login-grid-line: rgba(0, 243, 255, 0.22);
+  --login-aurora-1: rgba(0, 243, 255, 0.28);
+  --login-aurora-2: rgba(217, 70, 239, 0.26);
+  --login-aurora-3: rgba(89, 126, 247, 0.18);
+  --login-aurora-opacity: 0.78;
+
+  /* 暗色更偏黑紫：单独定义登录卡片背景，避免偏灰 */
+  --login-card-bg: rgba(10, 6, 20, 0.58);
+  --login-card-border: rgba(0, 243, 255, 0.22);
+  --login-card-glow: rgba(0, 243, 255, 0.22);
+  --login-card-shadow: 0 22px 80px rgba(0, 0, 0, 0.55), 0 0 60px rgba(0, 243, 255, 0.14);
+  --login-card-hover-shadow: 0 28px 90px rgba(0, 0, 0, 0.62), 0 0 80px rgba(217, 70, 239, 0.18);
+  
+  /* 滚动条颜色 */
+  --scrollbar-track: #1f1f1f;
+  --scrollbar-thumb: #555;
+  --scrollbar-thumb-hover: #888;
+  
+  /* 灰度背景色（深色模式）*/
+  --color-bg-gray-1: #1a1a1a;
+  --color-bg-gray-2: #262626;
+  --color-bg-gray-3: #2a2a2a;
+  
+  /* 状态提示背景色（深色模式）*/
+  --color-warning-bg: #3d2e1f;
+  --color-warning-border: #806020;
+  --color-error-bg: #3d1f1f;
+  --color-error-border: #80403d;
+  --color-info-bg: #3d3a1f;
+  --color-info-border: #80773d;
+  
+  /* 功能性颜色（深色模式保持区分度）*/
+  --color-interviewee: #a78bfa;  /* 面试者（浅紫色）*/
+  --color-interviewer: #60a5fa;   /* 面试官（浅蓝色）*/
+  
+  /* 灰色文字（深色模式）*/
+  --color-text-gray-light: #8c8c8c;
+  --color-text-gray-medium: #b8b8b8;
+  --color-text-gray-dark: #a3a3a3;
+
+  /* 科技感霓虹色 (深色模式调整) */
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #d946ef;
+  --color-neon-cyan: #22d3ee;
+  --color-neon-pink: #f472b6;
+
+  /* 语义化变量 (Dark Mode) */
+  --gradient-primary: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-purple));
+  --text-hero: #ffffff;
+  --shadow-card: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 243, 255, 0.1);
+  --bg-pattern-opacity: 1;
+
+  /* 用户头像 */
+  --avatar-bg: #3a3a3a;
+  --avatar-text: #e0e0e0;
+
+  /* 星星评分 */
+  --star-rating: #ffc53d;
+
+  /* 跑马灯背景 */
+  --marquee-bg: rgba(255, 255, 255, 0.05);
+
+  /* 玻璃拟态变量 (暗色模式) */
+  --glass-bg: rgba(20, 20, 20, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+
+  /* 统计卡片背景 */
+  --stat-card-bg: linear-gradient(180deg, rgba(40, 40, 40, 0.6) 0%, rgba(20, 20, 20, 0.4) 100%);
+
+  /* 背景网格线 - 彩色霓虹效果 */
+  --grid-line-color: rgba(0, 243, 255, 0.08);
+
+  /* CTA 光晕 - 增强版 */
+  --cta-glow: radial-gradient(circle, rgba(188, 19, 254, 0.25), rgba(0, 243, 255, 0.15) 50%, transparent 70%);
+
+  /* Ant Design 错误/危险色 (暗黑模式) */
+  --color-error: #ff4d4f;
+  --color-error-hover: #ff7875;
+
+  /* Hero 光晕效果 (暗黑增强) */
+  --hero-glow-color-1: rgba(0, 243, 255, 0.35);
+  --hero-glow-color-2: rgba(188, 19, 254, 0.28);
+
+  /* 按钮阴影 (暗黑) */
+  --shadow-button-primary: 0 4px 15px rgba(0, 243, 255, 0.3);
+
+  /* 文本阴影 (暗黑) */
+  --text-shadow-glow: 0 0 30px rgba(255, 255, 255, 0.1);
+
+  /* 卡片 hover 边框 (暗黑) */
+  --glass-hover-border: rgba(255, 255, 255, 0.2);
+
+  /* 玻璃光泽效果 (暗黑) */
+  --glass-shine: rgba(255, 255, 255, 0.03);
+
+  /* 标题渐变 (暗黑) */
+  --title-gradient-start: #fff;
+  --title-gradient-end: #999;
+
+  /* 图标投影颜色 (暗黑) */
+  --icon-drop-shadow: rgba(0, 243, 255, 0.5);
+
+  /* Guide Modal */
+  --guide-modal-bg: var(--color-bg-elevated);
+  --guide-modal-text: var(--color-text-base);
+  --guide-modal-border: var(--color-border);
+  --guide-modal-shadow: var(--shadow-lg);
+  
+  /* Guide 按钮 */
+  --guide-button-primary-bg: var(--color-primary);
+  --guide-button-primary-hover: var(--color-primary-hover);
+  --guide-button-text: #fff;
+  
+  /* Guide Mask */
+  --guide-mask-bg: rgba(0, 0, 0, 0.7);
+  
+  /* Guide Hotspot */
+  --guide-hotspot-border: var(--color-primary);
+  --guide-hotspot-shadow: 0 0 0 4px rgba(89, 126, 247, 0.3);
+}
+
+
+
+/* ==================== 全局盒模型重置 ==================== */
+/* 
+ * 为所有非 Ant Design 组件设置 border-box 盒模型
+ * 好处：padding 和 border 不会增加元素的总宽度
+ * 排除 Ant Design 组件以避免样式冲突
+ */
+*:not([class*='ant-']) {
+  box-sizing: border-box;
+}
+
+
+/* ==================== HTML 和 Body 基础样式 ==================== */
+/* 
+ * html, body 样式设置
+ * - max-width: 100vw - 防止页面宽度超出视口（避免水平滚动）
+ * - min-height: 100vh - 确保页面至少占满整个视口高度
+ * - overflow-x: hidden - 隐藏水平滚动条
+ */
+html,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ==================== Body 颜色和背景 ==================== */
+/* 
+ * body 样式设置
+ * - color: 使用 CSS 变量定义的前景色（黑色）
+ * - background: 创建从上到下的渐变背景
+ *   - 上半部分：透明渐变到白色
+ *   - 整体：白色背景
+ *   效果：顶部有轻微的渐变效果
+ * - font-family: 系统字体栈，避免网络请求 Google Fonts
+ * - transition: 平滑过渡主题切换
+ */
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* ==================== 自定义滚动条样式 ==================== */
+/* 
+ * 自定义浏览器滚动条的外观（仅适用于 WebKit 浏览器：Chrome、Safari、Edge）
+ * 注意：Firefox 和其他浏览器需要使用不同的属性
+ */
+
+/* 滚动条整体样式 */
+::-webkit-scrollbar {
+  width: 8px;   /* 垂直滚动条宽度 */
+  height: 8px;  /* 水平滚动条高度 */
+}
+
+/* 滚动条轨道（背景槽）样式 */ 
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);  /* 使用 CSS 变量 */
+}
+
+/* 滚动条滑块（可拖动部分）样式 */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);  /* 使用 CSS 变量 */
+  border-radius: 4px;                  /* 圆角 4px，使滑块更美观 */
+}
+
+/* 滚动条滑块悬停状态 */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);  /* 使用 CSS 变量 */
+}
+
+/* ==================== Ant Design 样式覆盖 ==================== */
+/* 
+ * 覆盖 Ant Design 的默认布局样式
+ * - min-height: 100vh - 确保布局至少占满整个视口高度
+ * 用途：防止内容较少时页面出现空白
+ */
+.ant-layout {
+  min-height: 100vh;
+}
+
+/* ==================== 工具类：卡片阴影效果 ==================== */
+/* 
+ * 可重用的卡片阴影样式
+ * 默认状态：轻微阴影（2px 偏移，8px 模糊）
+ * 悬停状态：加深阴影（4px 偏移，16px 模糊）
+ * transition：平滑过渡效果（0.3 秒）
+ * 
+ * 使用方式：<div className="card-shadow">...</div>
+ */
+.card-shadow {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* 默认阴影：轻微 */
+  transition: box-shadow 0.3s ease;           /* 平滑过渡 */
+}
+
+.card-shadow:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);  /* 悬停阴影：加深 */
+}
+
+/* ==================== 工具类：渐变背景 ==================== */
+/* 
+ * 紫色渐变背景（从蓝紫色到深紫色）
+ * 渐变角度：135deg（左上到右下）
+ * 颜色：#667eea（蓝紫） → #764ba2（深紫）
+ * 
+ * 使用方式：<div className="gradient-bg">...</div>
+ * 常用于：按钮、卡片、Hero 区域
+ */
+/* .gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+} */
+
+/* ==================== 登录页：科幻晕染背景层与玻璃卡片 ==================== */
+/* 登录页外层：负责背景与叠加层容器 */
+.loginPageRoot {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-login-bg);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+/* 确保内容在叠加层之上 */
+.loginPageRoot > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 科幻网格层：只动 transform，避免重排 */
+.loginPageRoot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--login-grid-opacity);
+  background-image:
+    linear-gradient(to right, var(--login-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--login-grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  animation: loginGridDrift 18s linear infinite;
+}
+
+/* 晕染流光层：模糊+轻微漂移，形成“科幻晕染” */
+.loginPageRoot::after {
+  content: '';
+  position: absolute;
+  inset: -18%;
+  pointer-events: none;
+  opacity: var(--login-aurora-opacity);
+  background-image:
+    radial-gradient(520px circle at 20% 25%, var(--login-aurora-1) 0%, transparent 60%),
+    radial-gradient(560px circle at 80% 30%, var(--login-aurora-2) 0%, transparent 62%),
+    radial-gradient(520px circle at 55% 85%, var(--login-aurora-3) 0%, transparent 60%);
+  filter: blur(42px) saturate(130%);
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  animation: loginAuroraFloat 14s ease-in-out infinite alternate;
+}
+
+@keyframes loginGridDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-64px, -64px, 0);
+  }
+}
+
+@keyframes loginAuroraFloat {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1) rotate(-1.2deg);
+  }
+  to {
+    transform: translate3d(2%, 1%, 0) scale(1.03) rotate(1.2deg);
+  }
+}
+
+/* 无障碍：用户选择“减少动态效果”时关闭动画 */
+@media (prefers-reduced-motion: reduce) {
+  .loginPageRoot::before,
+  .loginPageRoot::after {
+    animation: none;
+  }
+}
+
+/* 登录卡片：玻璃拟态 + 轻微霓虹描边 */
+.loginCard.ant-card {
+  background: var(--login-card-bg) !important;
+  border: 1px solid var(--login-card-border) !important;
+  box-shadow: var(--login-card-shadow) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  position: relative;
+  overflow: hidden;
+}
+
+.loginCard.ant-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background: radial-gradient(800px circle at 10% 10%, rgba(255, 255, 255, 0.22) 0%, transparent 45%);
+  opacity: 0.55;
+}
+
+.loginCard.ant-card:hover {
+  box-shadow: var(--login-card-hover-shadow) !important;
+}
+
+.loginCard.ant-card .ant-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== byte-guide 主题样式覆盖 ==================== */
+/* 
+ * 覆盖 byte-guide 默认样式，使其适配应用的亮色/暗色主题
+ * 通过 CSS 变量实现主题响应
+ */
+
+/* Guide Modal 弹窗样式 */
+.byte-guide-modal {
+  background: var(--guide-modal-bg) !important;
+  color: var(--guide-modal-text) !important;
+  border: 1px solid var(--guide-modal-border) !important;
+  box-shadow: var(--guide-modal-shadow) !important;
+}
+
+/* Guide Mask 遮罩层样式 */
+.byte-guide-mask {
+  background: var(--guide-mask-bg) !important;
+}
+
+/* Guide Hotspot 高亮框样式 */
+.byte-guide-hotspot {
+  border-color: var(--guide-hotspot-border) !important;
+  box-shadow: var(--guide-hotspot-shadow) !important;
+}
+
+/* Guide 主要按钮样式 */
+.byte-guide-button-primary {
+  background: var(--guide-button-primary-bg) !important;
+  color: var(--guide-button-text) !important;
+}
+
+.byte-guide-button-primary:hover {
+  background: var(--guide-button-primary-hover) !important;
+}
+
+/* ==================== 签到页样式（主题自适配） ==================== */
+.checkinHeaderCard {
+  border: none !important;
+  background: var(--gradient-primary) !important;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* 暗色：顶部背景更深，避免霓虹过亮导致对比不足 */
+[data-theme='dark'] .checkinHeaderCard {
+  background:
+    radial-gradient(900px circle at 15% 20%, rgba(0, 243, 255, 0.14) 0%, transparent 55%),
+    radial-gradient(900px circle at 85% 30%, rgba(217, 70, 239, 0.14) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(6, 3, 10, 0.95) 0%, rgba(11, 6, 32, 0.95) 55%, rgba(5, 1, 10, 0.95) 100%) !important;
+}
+
+.checkinHeaderTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme='dark'] .checkinHeaderTitle {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.checkinDigitBox {
+  width: 56px;
+  height: 64px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 暗色：数字框避免纯白眩光，改成玻璃拟态深底 + 高对比数字 */
+[data-theme='dark'] .checkinDigitBox {
+  background: rgba(10, 6, 20, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.checkinDayText {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme='dark'] .checkinDayText {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.checkinCell {
+  height: 72px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.checkinCell:hover {
+  background: var(--color-list-item-hover);
+}
+
+.checkinCell--unchecked {
+  background: transparent;
+}
+
+.checkinCell--checked {
+  background: rgba(24, 144, 255, 0.08);
+}
+
+[data-theme='dark'] .checkinCell--checked {
+  background: rgba(89, 126, 247, 0.18);
+}
+
+.checkinCell--out {
+  opacity: 0.35;
+}
+
+.checkinBadge {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+}
+
+.checkinBadge--off {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] .checkinBadge--off {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.checkinBadge--on {
+  background: rgba(24, 144, 255, 0.14);
+  border-color: rgba(24, 144, 255, 0.55);
+}
+
+[data-theme='dark'] .checkinBadge--on {
+  background: rgba(89, 126, 247, 0.22);
+  border-color: rgba(89, 126, 247, 0.62);
+}
+
+.checkinBadgeIcon {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+
+.checkinBadge--off .checkinBadgeIcon {
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .checkinBadge--off .checkinBadgeIcon {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.checkinBadge--on .checkinBadgeIcon {
+  background: var(--color-primary);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.checkinCellText {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.checkinCellText--on {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+

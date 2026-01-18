@@ -1,0 +1,17 @@
+# ESLint 忽略配置
+
+# 忽略 accordingto 参考代码文件夹
+accordingto/
+
+# Node modules
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Documentation
+*.md
+

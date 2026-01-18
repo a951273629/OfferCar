@@ -1,0 +1,133 @@
+# version: '3.8'
+
+# ================================
+# 生产环境部署配置
+# 使用 Docker Hub 镜像而非本地构建
+# ================================
+services:
+  # Web 主应用（Next.js）
+  web:
+    image: coderunxiaoming/offercar:web
+    container_name: offercar-web
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    networks:
+      - offercar-network
+    depends_on:
+      - webrtc
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+
+  # WebRTC 信令服务器（Express + Socket.io）
+  webrtc:
+    image: coderunxiaoming/offercar:webrtc
+    container_name: offercar-webrtc
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - SIGNALING_PORT=3001
+      - LOG_LEVEL=info
+    networks:
+      - offercar-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) }).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+  # Nginx 反向代理
+  nginx:
+    image: coderunxiaoming/offercar:nginx
+    container_name: offercar-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - offercar-network
+    depends_on:
+      - web
+      - docs
+      - webrtc
+    volumes:
+      # SSL 证书挂载（生产环境）
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      # Nginx 日志持久化
+      - nginx-logs:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+
+
+# ================================
+# 网络定义
+# ================================
+networks:
+  offercar-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# ================================
+# 数据卷定义
+# ================================
+volumes:
+  # Nginx 日志
+  nginx-logs:
+    driver: local
+
+

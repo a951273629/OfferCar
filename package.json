@@ -1,0 +1,28 @@
+{
+  "name": "offeryang-monorepo",
+  "version": "1.0.0",
+  "description": "OfferYang AI Interview Platform - Multi-Project Repository",
+  "private": true,
+  "scripts": {
+    "dev:web": "cd web_client && npm run dev",
+    "dev:webrtc": "cd webrtc_server && npm run dev",
+    "dev:electron": "cd window_client && npm run start",
+    "build:web": "cd web_client && npm run build",
+    "build:docs": "cd docs && npm run build",
+    "install:all": "cd web_client && npm install && cd ../webrtc_server && npm install && cd ../window_client && npm install && cd ../docs && npm install",
+    "test:web": "cd web_client && npm run test",
+    "test:webrtc": "cd webrtc_server && npm run test",
+    "lint:web": "cd web_client && npm run lint"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=7.0.0"
+  },
+  "keywords": [
+    "ai",
+    "interview",
+    "webrtc"
+  ],
+  "author": "OfferYang Team",
+  "license": "ISC"
+}

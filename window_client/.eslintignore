@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+*.js.map
+webpack.config.js
+electron-builder.config.js
+

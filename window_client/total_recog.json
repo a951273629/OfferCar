@@ -1,0 +1,306 @@
+{
+    "additions": {
+      "log_id": "202512030001014E357AFB98AA47A963B4"
+    },
+    "text": "简述 React 的生命周期，React 事件机制和原生 DOM 事件流有什么区别？Redux 工作原理，React Router 工作原理，React Router DOM 有哪些组件？",
+    "utterances": [
+      {
+        "additions": {
+          "all_matched_hotwords": "",
+          "fixed_prefix_result": "",
+          "invoke_type": "hard_vad",
+          "source": "two_pass",
+          "use_bigasr_post_process": "true"
+        },
+        "definite": true,
+        "end_time": 24181,
+        "start_time": 8942,
+        "text": "简述 React 的生命周期，React 事件机制和原生 DOM 事件流有什么区别？Redux 工作原理，React Router 工作原理，React Router DOM 有哪些组件？",
+        "words": [
+          {
+            "end_time": 9412,
+            "start_time": 9212,
+            "text": "简"
+          },
+          {
+            "end_time": 9652,
+            "start_time": 9412,
+            "text": "述"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 10172,
+            "start_time": 9892,
+            "text": "React"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 10532,
+            "start_time": 10292,
+            "text": "的"
+          },
+          {
+            "end_time": 10652,
+            "start_time": 10532,
+            "text": "生"
+          },
+          {
+            "end_time": 10812,
+            "start_time": 10652,
+            "text": "命"
+          },
+          {
+            "end_time": 11052,
+            "start_time": 10812,
+            "text": "周"
+          },
+          {
+            "end_time": 11292,
+            "start_time": 11052,
+            "text": "期"
+          },
+          {
+            "end_time": 12252,
+            "start_time": 11452,
+            "text": "React"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 12652,
+            "start_time": 12532,
+            "text": "事"
+          },
+          {
+            "end_time": 12812,
+            "start_time": 12652,
+            "text": "件"
+          },
+          {
+            "end_time": 13052,
+            "start_time": 12852,
+            "text": "机"
+          },
+          {
+            "end_time": 13172,
+            "start_time": 13052,
+            "text": "制"
+          },
+          {
+            "end_time": 13452,
+            "start_time": 13212,
+            "text": "和"
+          },
+          {
+            "end_time": 13652,
+            "start_time": 13452,
+            "text": "原"
+          },
+          {
+            "end_time": 13812,
+            "start_time": 13652,
+            "text": "生"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 14492,
+            "start_time": 14092,
+            "text": "DOM"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 14852,
+            "start_time": 14692,
+            "text": "事"
+          },
+          {
+            "end_time": 14932,
+            "start_time": 14852,
+            "text": "件"
+          },
+          {
+            "end_time": 15172,
+            "start_time": 15012,
+            "text": "流"
+          },
+          {
+            "end_time": 15412,
+            "start_time": 15252,
+            "text": "有"
+          },
+          {
+            "end_time": 15492,
+            "start_time": 15412,
+            "text": "什"
+          },
+          {
+            "end_time": 15652,
+            "start_time": 15492,
+            "text": "么"
+          },
+          {
+            "end_time": 15812,
+            "start_time": 15652,
+            "text": "区"
+          },
+          {
+            "end_time": 16012,
+            "start_time": 15812,
+            "text": "别"
+          },
+          {
+            "end_time": 17092,
+            "start_time": 16692,
+            "text": "Redux"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 17452,
+            "start_time": 17292,
+            "text": "工"
+          },
+          {
+            "end_time": 17612,
+            "start_time": 17452,
+            "text": "作"
+          },
+          {
+            "end_time": 17812,
+            "start_time": 17612,
+            "text": "原"
+          },
+          {
+            "end_time": 18012,
+            "start_time": 17812,
+            "text": "理"
+          },
+          {
+            "end_time": 18932,
+            "start_time": 18132,
+            "text": "React"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 19412,
+            "start_time": 18932,
+            "text": "Router"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 19732,
+            "start_time": 19572,
+            "text": "工"
+          },
+          {
+            "end_time": 19892,
+            "start_time": 19732,
+            "text": "作"
+          },
+          {
+            "end_time": 20052,
+            "start_time": 19892,
+            "text": "原"
+          },
+          {
+            "end_time": 20252,
+            "start_time": 20052,
+            "text": "理"
+          },
+          {
+            "end_time": 21212,
+            "start_time": 20412,
+            "text": "React"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 21612,
+            "start_time": 21212,
+            "text": "Router"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 22172,
+            "start_time": 21772,
+            "text": "DOM"
+          },
+          {
+            "end_time": -1,
+            "start_time": -1,
+            "text": " "
+          },
+          {
+            "end_time": 22612,
+            "start_time": 22372,
+            "text": "有"
+          },
+          {
+            "end_time": 22772,
+            "start_time": 22612,
+            "text": "哪"
+          },
+          {
+            "end_time": 22892,
+            "start_time": 22772,
+            "text": "些"
+          },
+          {
+            "end_time": 23172,
+            "start_time": 22892,
+            "text": "组"
+          },
+          {
+            "end_time": 23372,
+            "start_time": 23172,
+            "text": "件"
+          }
+        ]
+      },
+      {
+        "additions": {
+          "fixed_prefix_result": ""
+        },
+        "definite": false,
+        "end_time": -1,
+        "start_time": -1
+      }
+    ]
+  }

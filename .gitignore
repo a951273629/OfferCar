@@ -1,0 +1,73 @@
+# ================================
+# Web Client (Next.js)
+# ================================
+/web_client/node_modules
+/web_client/.next/
+/web_client/out/
+/web_client/coverage
+/web_client/*.tsbuildinfo
+/web_client/backups
+# ================================
+# WebRTC Server
+# ================================
+/webrtc_server/node_modules
+
+# ================================
+# Docs (Docusaurus)
+# ================================
+/docs/node_modules
+/docs/build
+/docs/.docusaurus
+
+# ================================
+# Window Client (Electron)
+# ================================
+/window_client/node_modules
+/window_client/dist
+/window_client/out
+
+# ================================
+# 通用忽略
+# ================================
+# 依赖
+.pnp
+.pnp.js
+
+# 日志
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量
+.env
+.env.production
+.env*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+*.pem
+
+# Vercel
+.vercel
+
+# TypeScript
+next-env.d.ts
+
+# 其他
+/accordingto
+/windows-client
+/Readme_md
+
+# 迁移脚本（开发完成后可删除）
+/migrate-project-structure.js
+
+node_modules
+.next
+/flutter_client
