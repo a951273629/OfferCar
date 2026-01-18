@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Logo占位符 - 请替换为实际Logo -->
-<img src=".github/assets/logo/offercar-logo.png" alt="OfferCar AI Logo" width="200"/>
+<img src=".github/assets/logo/logo.png" alt="OfferCar AI Logo" width="200"/>
 
 # OfferCar AI
 
@@ -27,23 +27,9 @@
 
 ---
 
-## 📋 目录
+## 📋 使用文档
 
-- [项目概述](#-项目概述)
-- [核心特性](#-核心特性)
-- [在线演示](#-在线演示)
-- [屏幕截图](#-屏幕截图)
-- [Star History](#-star-history)
-- [快速开始](#-快速开始)
-- [安装指南](#-安装指南)
-- [环境配置](#-环境配置)
-- [项目架构](#-项目架构)
-- [技术栈](#️-技术栈)
-- [使用文档](#-使用文档)
-- [Docker 部署](#-docker-部署)
-- [贡献指南](#-贡献指南)
-- [许可证](#-许可证)
-- [致谢](#-致谢)
+- [使用文档](https://docs.offercar.cn/docs/quick-start/intro/)
 
 ---
 
@@ -81,13 +67,7 @@
  **在线文档**：[在线文档](https://www.offercar.cn/docs)
 > 无需安装，即刻开始您的 AI 面试之旅！
 
-<div align="center">
-  <video width="100%" controls>
-    <source src=".github/assets/demos/demo.mp4" type="video/mp4">
-    您的浏览器不支持 HTML5 视频。
-  </video>
-  <p><em>AI 面试演示视频</em></p>
-</div>
+![demo](.github/assets/demos/demo.gif)
 
 ---
 
